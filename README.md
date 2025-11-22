@@ -22,17 +22,26 @@ HowTo Ecommerce is an advanced online shopping platform powered by the MERN (Mon
 1. Clone this repository: `git clone https://github.com/criticalPathway/how-to-commerce.git`
 2. Navigate to the client directory: `cd client`
 3. Install dependencies: `npm install`
-4. Start the client: `npm start`
-5. Access the client in your browser at: `http://localhost:3000`
+4. Create a `.env` file in the client directory with:
+   ```
+   REACT_APP_API_URL=http://localhost:4000/api
+   ```
+5. Start the client: `npm start`
+6. Access the client in your browser at: `http://localhost:3000`
 
 ## Installation (Server)
 
 1. Clone this repository: `git clone https://github.com/criticalPathway/how-to-commerce.git`
 2. Navigate to the server directory: `cd server`
 3. Install dependencies: `npm install`
-4. Start the server: `npm start`
-5.  Create a `.env` file in the server directory and set the necessary environment variables (e.g, MongoDB URI, PORT).
-    - `MONGODB_URI`: the MongoDB connection string
-    - `PORT`: a secret string for JWT authentication
-6. The server will be running at: `http://localhost:5000`
+4. Create a `.env` file in the server directory with the following variables:
+   ```
+   PORT=4000
+   MONGODB_URI=mongodb://localhost:27017/howto-ecommerce
+   JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
+   JWT_EXPIRES_IN=7d
+   CLIENT_URL=http://localhost:3000
+   ```
+5. Start the server: `npm start`
+6. The server will be running at: `http://localhost:4000`
 

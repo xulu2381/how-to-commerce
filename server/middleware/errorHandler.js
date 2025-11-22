@@ -1,0 +1,31 @@
+const errorHandler = (err, req, res, next) => {
+  console.error(err.stack);
+
+  if (err.name === 'ValidationError') {
+    return res.status(400).json({
+      status: 'fail',
+      message: Object.values(err.errors).map(e => e.message).join(', ')
+    });
+  }
+
+  if (err.name === 'CastError') {
+    return res.status(400).json({
+      status: 'fail',
+      message: 'Invalid ID format'
+    });
+  }
+
+  if (err.code === 11000) {
+    return res.status(400).json({
+      status: 'fail',
+      message: 'Duplicate field value entered'
+    });
+  }
+
+  res.status(err.status || 500).json({
+    status: 'error',
+    message: err.message || 'Internal server error'
+  });
+};
+
+module.exports = errorHandler;
